@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="mycarrier_webhook_action" model="ir.actions.act_window">
+            <field name="name">MyCarrier Webhook</field>
+            <field name="res_model">mycarrier.webhook</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <record id="mycarrier_webhook_list_view" model="ir.ui.view">
+            <field name="name">mycarrier.webhook.list.view</field>
+            <field name="model">mycarrier.webhook</field>
+            <field name="arch" type="xml">
+                <list create="1" decoration-danger="state=='error'" decoration-success="state == 'done'" decoration-info="state == 'draft'" >
+                    <field name="name" />
+                    <field name="data" />
+                    <field name="create_date" />
+                    <field name="state" />
+                </list>
+            </field>
+        </record>
+
+        <record id="mycarrier_webhook_form_view" model="ir.ui.view">
+            <field name="name">mycarrier.webhook.form.view</field>
+            <field name="model">mycarrier.webhook</field>
+            <field name="arch" type="xml">
+                <form edit="0">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done,error"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="data" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!--        <record id="update_product_mappings" model="ir.actions.act_window">-->
+<!--            <field name="name">Update Product Mapping</field>-->
+<!--            <field name="res_model">update.mapping.wizard</field>-->
+<!--            <field name="binding_model_id" ref="model_channel_product_mappings"/>-->
+<!--            <field name="view_mode">form</field>-->
+<!--            <field name="target">new</field>-->
+<!--		</record>-->
+
+        <record id="test_action_wizard" model="ir.actions.act_window">
+            <field name="name">Template Preview</field>
+            <field name="res_model">mycarrier.webhook</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="mycarrier_webhook_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+
+
+        <menuitem id="mycarrier_webhook_menu" name="MyCarrier Webhook" parent="stock.menu_delivery" action="mycarrier_webhook_action"/>
+
+        <record id="action_process_mycarrier_webhooks" model="ir.actions.server">
+            <field name="name">Process Data</field>
+            <field name="model_id" ref="model_mycarrier_webhook"/>
+            <field name="binding_model_id" ref="model_mycarrier_webhook"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                    action = records._process_data()
+            </field>
+        </record>
+    </data>
+</odoo>
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="quant_package_form_view_inherit_mycarrier" model="ir.ui.view">
+            <field name="name">stock.quant.package.form.view.inherit.mycarrier</field>
+            <field name="model">stock.quant.package</field>
+            <field name="inherit_id" ref="stock.view_quant_package_form"/>
+            <field name="arch" type="xml">
+                <field name="pack_date" position="after">
+                    <field name="mycarrier_quote_build_mode" invisible="1"/>
+                    <field name="mycarrier_commodity_class" invisible="mycarrier_quote_build_mode != 'package'"/>
+                    <field name="mycarrier_commodity_nmfc" invisible="mycarrier_quote_build_mode != 'package'"/>
+                    <field name="mycarrier_commodity_sub" invisible="mycarrier_quote_build_mode != 'package'"/>
+                    <field name="mycarrier_package_count" invisible="mycarrier_quote_build_mode != 'package'"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

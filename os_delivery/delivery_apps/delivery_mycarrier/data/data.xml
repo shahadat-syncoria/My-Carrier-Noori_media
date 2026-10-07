@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<odoo><data noupdate="1">
+
+    <!--  Accessorials -->
+    <record id="mycarrier_accessorials_delivery_appointment" model="mycarrier.accessorials">
+        <field name="name">Delivery Appointment</field>
+        <field name="color" eval="1"/>
+    </record>
+
+    <record id="mycarrier_accessorials_inside_delivery" model="mycarrier.accessorials">
+        <field name="name">Inside Delivery</field>
+        <field name="color" eval="2"/>
+    </record>
+
+    <record id="mycarrier_accessorials_liftgate_delivery" model="mycarrier.accessorials">
+        <field name="name">Liftgate Delivery</field>
+        <field name="color" eval="3"/>
+    </record>
+
+    <record id="mycarrier_accessorials_notify_delivery" model="mycarrier.accessorials">
+        <field name="name">Notify Before Delivery</field>
+        <field name="color" eval="4"/>
+    </record>
+
+    <record id="mycarrier_accessorials_sort_segregate_delivery" model="mycarrier.accessorials">
+        <field name="name">Sort/Segregate Delivery</field>
+        <field name="color" eval="5"/>
+    </record>
+
+    <!--  Location Type -->
+    <record id="mycarrier_location_type_business" model="mycarrier.location.type">
+        <field name="name">Business</field>
+        <field name="sequence" eval="100"/>
+    </record>
+
+    <record id="mycarrier_location_type_residential" model="mycarrier.location.type">
+        <field name="name">Residential</field>
+        <field name="sequence" eval="99"/>
+    </record>
+
+    <record id="mycarrier_location_type_trade_show" model="mycarrier.location.type">
+        <field name="name">Trade Show</field>
+        <field name="sequence" eval="98"/>
+    </record>
+
+    <record id="mycarrier_location_type_airport" model="mycarrier.location.type">
+        <field name="name">Airport</field>
+        <field name="sequence" eval="97"/>
+    </record>
+
+    <record id="mycarrier_location_type_camp" model="mycarrier.location.type">
+        <field name="name">Camp</field>
+        <field name="sequence" eval="96"/>
+    </record>
+
+    <record id="mycarrier_location_type_church" model="mycarrier.location.type">
+        <field name="name">Church</field>
+        <field name="sequence" eval="95"/>
+    </record>
+
+    <record id="mycarrier_location_type_construction_site" model="mycarrier.location.type">
+        <field name="name">Construction Site</field>
+        <field name="sequence" eval="94"/>
+    </record>
+
+    <record id="mycarrier_location_type_country_club" model="mycarrier.location.type">
+        <field name="name">Country Club</field>
+        <field name="sequence" eval="93"/>
+    </record>
+
+    <record id="mycarrier_location_type_fair_amusement_park" model="mycarrier.location.type">
+        <field name="name">Fair/Amusement/Park</field>
+        <field name="sequence" eval="92"/>
+    </record>
+
+    <record id="mycarrier_location_type_farm" model="mycarrier.location.type">
+        <field name="name">Farm</field>
+        <field name="sequence" eval="91"/>
+    </record>
+
+    <record id="mycarrier_location_type_government_site" model="mycarrier.location.type">
+        <field name="name">Government Site</field>
+        <field name="sequence" eval="90"/>
+    </record>
+
+    <record id="mycarrier_location_type_grocery_warehouse" model="mycarrier.location.type">
+        <field name="name">Grocery Warehouse</field>
+        <field name="sequence" eval="89"/>
+    </record>
+
+    <record id="mycarrier_location_type_hospital" model="mycarrier.location.type">
+        <field name="name">Hospital</field>
+        <field name="sequence" eval="88"/>
+    </record>
+
+    <record id="mycarrier_location_type_hotel" model="mycarrier.location.type">
+        <field name="name">Hotel</field>
+        <field name="sequence" eval="87"/>
+    </record>
+
+    <record id="mycarrier_location_type_limited_access" model="mycarrier.location.type">
+        <field name="name">Limited Access</field>
+        <field name="sequence" eval="86"/>
+    </record>
+
+    <record id="mycarrier_location_type_military_installation" model="mycarrier.location.type">
+        <field name="name">Military Installation</field>
+        <field name="sequence" eval="85"/>
+    </record>
+
+    <record id="mycarrier_location_type_mine_site" model="mycarrier.location.type">
+        <field name="name">Mine Site</field>
+        <field name="sequence" eval="84"/>
+    </record>
+
+    <record id="mycarrier_location_type_native_american_reservation" model="mycarrier.location.type">
+        <field name="name">Native American Reservation</field>
+        <field name="sequence" eval="83"/>
+    </record>
+
+    <record id="mycarrier_location_type_nursing_home" model="mycarrier.location.type">
+        <field name="name">Nursing Home</field>
+        <field name="sequence" eval="82"/>
+    </record>
+
+    <record id="mycarrier_location_type_pier" model="mycarrier.location.type">
+        <field name="name">Pier</field>
+        <field name="sequence" eval="81"/>
+    </record>
+
+    <record id="mycarrier_location_type_prison" model="mycarrier.location.type">
+        <field name="name">Prison</field>
+        <field name="sequence" eval="80"/>
+    </record>
+
+    <record id="mycarrier_location_type_resort" model="mycarrier.location.type">
+        <field name="name">Resort</field>
+        <field name="sequence" eval="79"/>
+    </record>
+
+    <record id="mycarrier_location_type_school" model="mycarrier.location.type">
+        <field name="name">School</field>
+        <field name="sequence" eval="78"/>
+    </record>
+
+    <record id="mycarrier_location_type_self_storage" model="mycarrier.location.type">
+        <field name="name">Self-Storage</field>
+        <field name="sequence" eval="77"/>
+    </record>
+
+    <record id="mycarrier_location_type_utility_site" model="mycarrier.location.type">
+        <field name="name">Utility Site</field>
+        <field name="sequence" eval="76"/>
+    </record>
+
+</data></odoo>

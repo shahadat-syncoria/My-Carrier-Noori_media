@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_picking_form_inherit_mycarrier" model="ir.ui.view">
+            <field name="name">view.picking.form.inherit.mycarrier</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+<!--                <xpath expr="//field[@name='state']" position="replace">-->
+<!--                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,mycarrier,assigned,done"/>-->
+<!--                </xpath>-->
+                <xpath expr="//button[@name='button_validate' and contains(@class, 'o_btn_validate')]"
+                       position="attributes">
+                    <attribute name="invisible">
+                        state in ('waiting', 'assigned', 'mycarrier', 'done', 'cancel')
+                    </attribute>
+                </xpath>
+                <xpath expr="//header" position="inside">
+                    <field name="destination_country_code" invisible="1"/>
+                    <field name="total_weight_done" invisible="1"/>
+                    <field name="pushed_to_mycarrier" invisible="1"/>
+                    <button string="Create Mycarrier quote" type="object" name="create_mycarrier_quote_by_package"
+                            invisible="pushed_to_mycarrier or state in ('done', 'cancel')"/>
+                    <button string="Update Mycarrier quote" type="object" name="create_mycarrier_quote_by_package"
+                            invisible="not pushed_to_mycarrier or state in ('done', 'cancel')"/>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="MyCarrier">
+                        <group>
+                            <group string="Origin">
+                                <field name="origin_location_type"
+                                       options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
+                                <field name="origin_inside_pickup"/>
+                                <field name="origin_liftgate_pickup"/>
+                                <field name="origin_protect_from_freeze"/>
+                                <field name="origin_single_shipment"/>
+                                <field name="origin_inbond_freight"/>
+                            </group>
+                            <group string="Destination">
+                                <field name="dest_location_type"
+                                       options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
+                                <field name="dest_notify_delivery"/>
+                                <field name="dest_liftgate_delivery"/>
+                                <field name="dest_sort_segregate_delivery"/>
+                                <field name="dest_inside_delivery"/>
+                                <field name="dest_delivery_appointment"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Send to MyCarrier">
+                                <field name="mycarrier_po_number" readonly="pushed_to_mycarrier"/>
+                                <field name="mycarrier_customer_bol_number" readonly="pushed_to_mycarrier"/>
+                                <field name="mycarrier_special_instructions" readonly="pushed_to_mycarrier"/>
+                            </group>
+                            <group string="MyCarrier Tracking">
+                                <field name="mycarrier_shipment_id" readonly="1"/>
+                                <field name="mycarrier_ref_number" readonly="1"/>
+                                <field name="mycarrier_pickup_number" readonly="1"/>
+                                <field name="mycarrier_carrier_code" readonly="1"/>
+                                <field name="mycarrier_carrier_name" readonly="1"/>
+                                <field name="mycarrier_pro_number" readonly="1"/>
+                                <field name="mycarrier_total_cost" readonly="1"/>
+                                <field name="mycarrier_pickup_date" readonly="1"/>
+                                <field name="mycarrier_transit_time" readonly="1"/>
+                                <field name="mycarrier_estimated_delivery_date" readonly="1"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//page[@name='operations']/field[@name='move_ids_without_package']/list/field[@name='product_id']"
+                       position="after">
+                    <!--                    <field name="weight" optional="show"/>-->
+                    <field name="weight_done" optional="show"/>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='location_id']" position="after">
+                    <field name="total_weight_done"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

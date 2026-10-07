@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mycarrier_instance,access.mycarrier.instance,model_mycarrier_instance,base.group_user,1,1,1,1
+access_mycarrier_product_mappings,access.mycarrier.product.mappings,model_mycarrier_product_mappings,base.group_user,1,1,1,1
+access_mycarrier_webhook,access.mycarrier.webhook,model_mycarrier_webhook,base.group_user,1,1,1,1
+access_mycarrier_registered_webhooks,access.mycarrier.registered.webhooks,model_mycarrier_registered_webhooks,base.group_user,1,1,1,1
+access_mycarrier_accessorials,access.mycarrier.accessorials,model_mycarrier_accessorials,base.group_user,1,1,1,1
+access_mycarrier_location_type,access.mycarrier.location.type,model_mycarrier_location_type,base.group_user,1,1,1,1
+access_mycarrier_warehouse_mappings,access.mycarrier.warehouse.mappings,model_mycarrier_warehouse_mappings,base.group_user,1,1,1,1
+access_mycarrier_location_mappings,access.mycarrier.location.mappings,model_mycarrier_location_mappings,base.group_user,1,1,1,1

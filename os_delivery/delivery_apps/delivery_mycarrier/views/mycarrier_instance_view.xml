@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="mycarrier_instance_action" model="ir.actions.act_window">
+            <field name="name">MyCarrier Instance</field>
+            <field name="res_model">mycarrier.instance</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <record id="mycarrier_instance_list_view" model="ir.ui.view">
+            <field name="name">mycarrier.instance.list.view</field>
+            <field name="model">mycarrier.instance</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="name" />
+                    <field name="connect_state" />
+                    <field name="account_id" />
+                </list>
+            </field>
+        </record>
+
+        <record id="mycarrier_instance_form_view" model="ir.ui.view">
+            <field name="name">mycarrier.instance.form.view</field>
+            <field name="model">mycarrier.instance</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button string="Test Connection" class="btn btn-primary" name="check_connection_access" type="object" />
+                        <field name="connect_state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                        <widget name="web_ribbon" title="Connected" invisible="connect_state != 'confirm'"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="delivery_product_id" required="1"/>
+                            <field name="quote_build_mode"/>
+                            <field name="location_source"/>
+                            <field name="auto_validate_picking"/>
+                            <field name="auto_validate_timing" invisible="not auto_validate_picking"/>
+                        </group>
+                        <notebook>
+                            <page string="Credentials">
+                                <group>
+                                    <field name="account_id"/>
+                                    <field name="token" password="True"/>
+                                </group>
+                            </page>
+                            <page string="Products">
+                                <field name="product_mapping_ids">
+                                    <list edit="1" create="1" delete="1" editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="sku" />
+                                        <field name="mycarrier_product_id" />
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Warehouse Mapping" invisible="location_source != 'warehouse'">
+                                <field name="warehouse_mapping_ids">
+                                    <list edit="1" create="1" delete="1" editable="bottom">
+                                        <field name="warehouse_id"/>
+                                        <field name="mycarrier_location_id"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Location Mapping" invisible="location_source != 'location'">
+                                <field name="location_mapping_ids">
+                                    <list edit="1" create="1" delete="1" editable="bottom">
+                                        <field name="location_id"/>
+                                        <field name="mycarrier_location_id"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Default Accessorials">
+                                <group>
+                                    <group string="Origin">
+                                        <field name="default_origin_location_type"
+                                               options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="default_origin_inside_pickup"/>
+                                        <field name="default_origin_liftgate_pickup"/>
+                                        <field name="default_origin_protect_from_freeze"/>
+                                        <field name="default_origin_single_shipment"/>
+                                        <field name="default_origin_inbond_freight"/>
+                                    </group>
+                                    <group string="Destination">
+                                        <field name="default_dest_location_type"
+                                               options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="default_dest_delivery_appointment"/>
+                                        <field name="default_dest_inside_delivery"/>
+                                        <field name="default_dest_liftgate_delivery"/>
+                                        <field name="default_dest_notify_delivery"/>
+                                        <field name="default_dest_sort_segregate_delivery"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Webhooks">
+                                <field name="registered_webhook_ids" readonly="1">
+                                    <list>
+                                        <field name="webhook_environment"/>
+                                        <field name="webhook_username" />
+                                        <field name="webhook_customerid" />
+                                        <field name="webhook_type" />
+                                        <field name="webhook_uri" />
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <menuitem id="mycarrier_instance_menu" name="MyCarrier" parent="stock.menu_delivery" action="mycarrier_instance_action"/>
+    </data>
+</odoo>
